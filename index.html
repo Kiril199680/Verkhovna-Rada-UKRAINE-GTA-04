@@ -42,7 +42,7 @@
             padding: 1rem 0;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             position: relative;
-            overflow: hidden;
+            z-index: 100; /* Додано z-index */
         }
 
         header::before {
@@ -90,7 +90,7 @@
             margin-top: 0.3rem;
         }
 
-        /* Оновлена навігація з випадаючими меню */
+        /* Оновлена навігація */
         nav {
             display: flex;
             gap: 0.5rem;
@@ -147,7 +147,7 @@
             visibility: hidden;
             transform: translateY(10px);
             transition: var(--transition);
-            z-index: 100;
+            z-index: 110; /* Вищий ніж у шапки */
         }
 
         .nav-item:hover .dropdown-menu {
@@ -202,6 +202,7 @@
             background-size: cover;
             position: relative;
             color: white;
+            margin-top: 0; /* Додано для уникнення зсуву */
         }
 
         .hero::before {
