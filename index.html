@@ -4,14 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Верховна Рада України | UKRAINE GTA 04</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap">
     <style>
         :root {
             --primary: #0057b7;
+            --primary-dark: #003d82;
             --secondary: #ffd700;
-            --dark: #1a1a1a;
-            --light: #f8f9fa;
-            --transition: all 0.3s ease;
+            --secondary-dark: #e6c300;
+            --dark: #1e1e1e;
+            --gray: #6c757d;
+            --light-gray: #f8f9fa;
+            --white: #ffffff;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
         * {
@@ -21,80 +25,110 @@
         }
 
         body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--light);
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--light-gray);
             color: var(--dark);
+            line-height: 1.6;
             overflow-x: hidden;
         }
 
+        /* Header Styles */
         .header {
-            background: linear-gradient(135deg, var(--primary) 0%, #003d82 100%);
-            color: white;
-            padding: 1rem 0;
+            background-color: var(--primary-dark);
+            color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             position: relative;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            z-index: 100;
         }
 
-        .header::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.05)" d="M0,0 L100,0 L100,100 L0,100 Z" /></svg>');
-            background-size: cover;
-            opacity: 0.1;
+        .header-top {
+            background-color: var(--primary);
+            padding: 0.5rem 0;
+            font-size: 0.9rem;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            position: relative;
-        }
-
-        .navbar {
+        .header-top-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .header-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .header-link {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .header-link:hover {
+            color: var(--secondary);
+        }
+
+        .header-main {
             padding: 1rem 0;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
         }
 
         .logo {
             display: flex;
             align-items: center;
             gap: 1rem;
+            text-decoration: none;
         }
 
         .logo-img {
-            height: 50px;
-            animation: float 3s ease-in-out infinite;
+            height: 60px;
+            transition: var(--transition);
+        }
+
+        .logo:hover .logo-img {
+            transform: scale(1.05);
         }
 
         .logo-text {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: white;
+            display: flex;
+            flex-direction: column;
         }
 
-        .logo-text span {
-            color: var(--secondary);
+        .logo-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.2;
+        }
+
+        .logo-subtitle {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
         }
 
         .nav-link {
-            color: white;
+            color: var(--white);
             text-decoration: none;
             font-weight: 500;
+            padding: 0.5rem 0;
             position: relative;
             transition: var(--transition);
-            padding: 0.5rem 0;
         }
 
         .nav-link::after {
@@ -116,190 +150,250 @@
             color: var(--secondary);
         }
 
+        /* Hero Section */
         .hero {
-            padding: 5rem 0;
+            background: linear-gradient(rgba(0, 87, 183, 0.9), rgba(0, 87, 183, 0.9)), 
+                        url('https://www.rada.gov.ua/images/backgrounds/bg-main.jpg') no-repeat center center;
+            background-size: cover;
+            color: var(--white);
+            padding: 4rem 1rem;
             text-align: center;
-            position: relative;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .hero-title {
-            font-size: 3.5rem;
+            font-size: 2.5rem;
             margin-bottom: 1.5rem;
-            line-height: 1.2;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        .hero-title span {
-            color: var(--secondary);
+            font-weight: 700;
+            animation: fadeInUp 0.8s ease-out;
         }
 
         .hero-subtitle {
-            font-size: 1.25rem;
-            max-width: 700px;
-            margin: 0 auto 2rem;
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
             color: rgba(255, 255, 255, 0.9);
-            animation: fadeInUp 1s ease-out 0.2s forwards;
+            animation: fadeInUp 0.8s ease-out 0.2s forwards;
+            opacity: 0;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            animation: fadeInUp 0.8s ease-out 0.4s forwards;
             opacity: 0;
         }
 
         .btn {
             display: inline-block;
             padding: 0.75rem 2rem;
-            background-color: var(--secondary);
-            color: var(--dark);
-            border-radius: 50px;
+            border-radius: 4px;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 500;
             transition: var(--transition);
-            border: none;
-            cursor: pointer;
-            animation: fadeInUp 1s ease-out 0.4s forwards;
-            opacity: 0;
         }
 
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        .btn-primary {
+            background-color: var(--secondary);
+            color: var(--dark);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .btn-outline {
             background-color: transparent;
             border: 2px solid var(--secondary);
             color: var(--secondary);
-            margin-left: 1rem;
         }
 
         .btn-outline:hover {
-            background-color: var(--secondary);
-            color: var(--dark);
+            background-color: rgba(255, 215, 0, 0.1);
+            transform: translateY(-2px);
         }
 
-        .features {
-            padding: 5rem 0;
-            background-color: white;
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
         }
 
         .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-dark);
             position: relative;
+            padding-bottom: 0.5rem;
         }
 
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            border-radius: 2px;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--secondary);
         }
 
-        .features-grid {
+        .news-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
         }
 
-        .feature-card {
-            background-color: white;
-            border-radius: 10px;
-            padding: 2rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        .news-card {
+            background-color: var(--white);
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             transition: var(--transition);
             opacity: 0;
             transform: translateY(20px);
         }
 
-        .feature-card:nth-child(1) {
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .news-card:nth-child(1) {
             animation: fadeInUp 0.6s ease-out 0.2s forwards;
         }
 
-        .feature-card:nth-child(2) {
+        .news-card:nth-child(2) {
             animation: fadeInUp 0.6s ease-out 0.4s forwards;
         }
 
-        .feature-card:nth-child(3) {
+        .news-card:nth-child(3) {
             animation: fadeInUp 0.6s ease-out 0.6s forwards;
         }
 
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        .news-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
         }
 
-        .feature-icon {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
+        .news-content {
+            padding: 1.5rem;
         }
 
-        .feature-title {
-            font-size: 1.5rem;
+        .news-date {
+            font-size: 0.8rem;
+            color: var(--gray);
+            margin-bottom: 0.5rem;
+        }
+
+        .news-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-dark);
+        }
+
+        .news-excerpt {
+            color: var(--gray);
+            font-size: 0.95rem;
             margin-bottom: 1rem;
+        }
+
+        .read-more {
             color: var(--primary);
-        }
-
-        .feature-desc {
-            color: #666;
-            line-height: 1.6;
-        }
-
-        .footer {
-            background-color: var(--dark);
-            color: white;
-            padding: 3rem 0;
-            text-align: center;
-        }
-
-        .footer-logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            display: inline-block;
-        }
-
-        .footer-logo span {
-            color: var(--secondary);
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-link {
-            color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
             transition: var(--transition);
         }
 
-        .footer-link:hover {
-            color: var(--secondary);
+        .read-more:hover {
+            color: var(--primary-dark);
         }
 
-        .copyright {
-            color: rgba(255, 255, 255, 0.5);
+        .read-more::after {
+            content: '→';
+            margin-left: 5px;
+            transition: var(--transition);
+        }
+
+        .read-more:hover::after {
+            transform: translateX(3px);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            padding: 3rem 1rem 1.5rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-link {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-link a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
             font-size: 0.9rem;
         }
 
-        @keyframes float {
-            0% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-            100% {
-                transform: translateY(0px);
-            }
+        .footer-link a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
         }
 
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Animations */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -311,112 +405,174 @@
             }
         }
 
+        /* Responsive */
         @media (max-width: 768px) {
-            .navbar {
+            .header-container {
                 flex-direction: column;
-                gap: 1.5rem;
+                gap: 1rem;
             }
 
             .nav-links {
                 gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
             }
 
             .hero-title {
-                font-size: 2.5rem;
+                font-size: 2rem;
             }
 
             .hero-subtitle {
                 font-size: 1rem;
             }
 
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
             .btn {
-                display: block;
-                margin: 1rem auto;
-                width: 80%;
-            }
-
-            .btn-outline {
-                margin-left: 0;
-                margin-top: 1rem;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
             }
         }
     </style>
 </head>
 <body>
     <header class="header">
-        <div class="container">
-            <nav class="navbar">
-                <div class="logo">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Emblem_of_Verkhovna_Rada.svg/1200px-Emblem_of_Verkhovna_Rada.svg.png" alt="Лого Верховної Ради" class="logo-img">
-                    <div class="logo-text">Верховна Рада <span>UKRAINE GTA 04</span></div>
+        <div class="header-top">
+            <div class="header-top-container">
+                <div class="header-links">
+                    <a href="#" class="header-link">UA</a>
+                    <a href="#" class="header-link">EN</a>
+                    <a href="#" class="header-link">Для громадян</a>
+                    <a href="#" class="header-link">Для ЗМІ</a>
                 </div>
-                <div class="nav-links">
+                <div class="header-links">
+                    <a href="#" class="header-link">Пошук</a>
+                    <a href="#" class="header-link">Карта сайту</a>
+                </div>
+            </div>
+        </div>
+        <div class="header-main">
+            <div class="header-container">
+                <a href="#" class="logo">
+                    <img src="https://www.rada.gov.ua/images/Logo/logo_white.svg" alt="Лого Верховної Ради" class="logo-img">
+                    <div class="logo-text">
+                        <div class="logo-title">Верховна Рада України</div>
+                        <div class="logo-subtitle">UKRAINE GTA 04</div>
+                    </div>
+                </a>
+                <nav class="nav-links">
                     <a href="#" class="nav-link">Головна</a>
-                    <a href="#" class="nav-link">Проекти</a>
+                    <a href="#" class="nav-link">Про Раду</a>
                     <a href="#" class="nav-link">Депутати</a>
+                    <a href="#" class="nav-link">Законодавство</a>
                     <a href="#" class="nav-link">Новини</a>
                     <a href="#" class="nav-link">Контакти</a>
-                </div>
-            </nav>
+                </nav>
+            </div>
         </div>
     </header>
 
     <section class="hero">
-        <div class="container">
-            <h1 class="hero-title">Верховна Рада <span>України</span></h1>
-            <p class="hero-subtitle">Офіційний представницький орган державної влади в UKRAINE GTA 04. Тут приймаються закони, які формують наше суспільство.</p>
+        <div class="hero-container">
+            <h1 class="hero-title">Верховна Рада України</h1>
+            <p class="hero-subtitle">Єдиний законодавчий орган державної влади в UKRAINE GTA 04. Представництво інтересів громадян та прийняття законів.</p>
             <div class="hero-buttons">
-                <a href="#" class="btn">Дізнатися більше</a>
-                <a href="#" class="btn btn-outline">Приєднатися</a>
+                <a href="#" class="btn btn-primary">Останні новини</a>
+                <a href="#" class="btn btn-outline">Документи</a>
             </div>
         </div>
     </section>
 
-    <section class="features">
-        <div class="container">
-            <h2 class="section-title">Наші можливості</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">📜</div>
-                    <h3 class="feature-title">Законодавча діяльність</h3>
-                    <p class="feature-desc">Прийняття законів, які регулюють життя громадян та розвиток держави в UKRAINE GTA 04.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">👥</div>
-                    <h3 class="feature-title">Представництво інтересів</h3>
-                    <p class="feature-desc">Захист прав та інтересів громадян через систему депутатської діяльності.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🏛️</div>
-                    <h3 class="feature-title">Контроль влади</h3>
-                    <p class="feature-desc">Забезпечення балансу влади та контролю за діяльністю виконавчих органів.</p>
-                </div>
+    <div class="main-content">
+        <section class="news-section">
+            <h2 class="section-title">Останні новини</h2>
+            <div class="news-grid">
+                <article class="news-card">
+                    <img src="https://www.rada.gov.ua/uploads/news/2023/10/11/1.jpg" alt="Новина 1" class="news-image">
+                    <div class="news-content">
+                        <div class="news-date">11 жовтня 2023</div>
+                        <h3 class="news-title">Засідання Верховної Ради</h3>
+                        <p class="news-excerpt">Розглянуто питання реформи правоохоронної системи в UKRAINE GTA 04.</p>
+                        <a href="#" class="read-more">Детальніше</a>
+                    </div>
+                </article>
+                <article class="news-card">
+                    <img src="https://www.rada.gov.ua/uploads/news/2023/10/10/1.jpg" alt="Новина 2" class="news-image">
+                    <div class="news-content">
+                        <div class="news-date">10 жовтня 2023</div>
+                        <h3 class="news-title">Нові законодавчі ініціативи</h3>
+                        <p class="news-excerpt">Депутати внесли низку законопроєктів щодо економічного розвитку.</p>
+                        <a href="#" class="read-more">Детальніше</a>
+                    </div>
+                </article>
+                <article class="news-card">
+                    <img src="https://www.rada.gov.ua/uploads/news/2023/10/09/1.jpg" alt="Новина 3" class="news-image">
+                    <div class="news-content">
+                        <div class="news-date">09 жовтня 2023</div>
+                        <h3 class="news-title">Міжнародне співробітництво</h3>
+                        <p class="news-excerpt">Зустріч з представниками міжнародних організацій щодо підтримки України.</p>
+                        <a href="#" class="read-more">Детальніше</a>
+                    </div>
+                </article>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
     <footer class="footer">
-        <div class="container">
-            <div class="footer-logo">Верховна Рада <span>UKRAINE GTA 04</span></div>
-            <div class="footer-links">
-                <a href="#" class="footer-link">Політика конфіденційності</a>
-                <a href="#" class="footer-link">Умови використання</a>
-                <a href="#" class="footer-link">Документи</a>
-                <a href="#" class="footer-link">API</a>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Верховна Рада</h3>
+                <ul class="footer-links">
+                    <li class="footer-link"><a href="#">Про Верховну Раду</a></li>
+                    <li class="footer-link"><a href="#">Структура</a></li>
+                    <li class="footer-link"><a href="#">Депутати</a></li>
+                    <li class="footer-link"><a href="#">Комітети</a></li>
+                    <li class="footer-link"><a href="#">Фракції</a></li>
+                </ul>
             </div>
-            <p class="copyright">© 2023 Верховна Рада UKRAINE GTA 04. Усі права захищені.</p>
+            <div class="footer-column">
+                <h3>Документи</h3>
+                <ul class="footer-links">
+                    <li class="footer-link"><a href="#">Закони України</a></li>
+                    <li class="footer-link"><a href="#">Постанови</a></li>
+                    <li class="footer-link"><a href="#">Рішення</a></li>
+                    <li class="footer-link"><a href="#">Законопроєкти</a></li>
+                    <li class="footer-link"><a href="#">Регламент</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Ресурси</h3>
+                <ul class="footer-links">
+                    <li class="footer-link"><a href="#">Бібліотека</a></li>
+                    <li class="footer-link"><a href="#">Архів</a></li>
+                    <li class="footer-link"><a href="#">Відеоархів</a></li>
+                    <li class="footer-link"><a href="#">Парламентські видання</a></li>
+                    <li class="footer-link"><a href="#">API для розробників</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Контакти</h3>
+                <ul class="footer-links">
+                    <li class="footer-link"><a href="#">Адреса</a></li>
+                    <li class="footer-link"><a href="#">Телефони</a></li>
+                    <li class="footer-link"><a href="#">Графік роботи</a></li>
+                    <li class="footer-link"><a href="#">Зворотній зв'язок</a></li>
+                    <li class="footer-link"><a href="#">Соціальні мережі</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2023 Верховна Рада України | UKRAINE GTA 04. Усі права захищені.</p>
         </div>
     </footer>
 
     <script>
-        // Додаткові анімації при скролі
+        // Анімації при скролі
         document.addEventListener('DOMContentLoaded', function() {
-            const featureCards = document.querySelectorAll('.feature-card');
-            
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -426,7 +582,7 @@
                 });
             }, { threshold: 0.1 });
 
-            featureCards.forEach(card => {
+            document.querySelectorAll('.news-card').forEach(card => {
                 observer.observe(card);
             });
 
@@ -434,9 +590,12 @@
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
                 });
             });
         });
