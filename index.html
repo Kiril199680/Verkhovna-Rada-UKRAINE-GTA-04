@@ -9,13 +9,13 @@
         :root {
             --primary: #0057b7;
             --primary-dark: #003d82;
-            --secondary: #ffd700;
-            --secondary-dark: #e6c300;
+            --secondary: #d4a017;
             --dark: #1e1e1e;
             --gray: #6c757d;
-            --light-gray: #f8f9fa;
+            --light-gray: #f5f5f5;
+            --page-bg: #f8f8f8;
             --white: #ffffff;
-            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --transition: all 0.3s ease;
         }
 
         * {
@@ -26,78 +26,42 @@
 
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: var(--light-gray);
+            background-color: var(--page-bg);
             color: var(--dark);
             line-height: 1.6;
-            overflow-x: hidden;
         }
 
-        /* Header Styles */
+        .page-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: var(--white);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+            min-height: 100vh;
+        }
+
         .header {
             background-color: var(--primary-dark);
             color: var(--white);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: relative;
-            z-index: 100;
+            padding: 1.5rem 2rem;
+            border-bottom: 4px solid var(--secondary);
         }
 
-        .header-top {
-            background-color: var(--primary);
-            padding: 0.5rem 0;
-            font-size: 0.9rem;
-        }
-
-        .header-top-container {
+        .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 0 1rem;
-        }
-
-        .header-links {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .header-link {
-            color: rgba(255, 255, 255, 0.9);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .header-link:hover {
-            color: var(--secondary);
-        }
-
-        .header-main {
-            padding: 1rem 0;
-        }
-
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
         }
 
         .logo {
             display: flex;
             align-items: center;
             gap: 1rem;
-            text-decoration: none;
         }
 
         .logo-img {
             height: 60px;
-            transition: var(--transition);
-        }
-
-        .logo:hover .logo-img {
-            transform: scale(1.05);
         }
 
         .logo-text {
@@ -106,15 +70,16 @@
         }
 
         .logo-title {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 700;
+            line-height: 1;
             color: var(--white);
-            line-height: 1.2;
         }
 
         .logo-subtitle {
-            font-size: 0.9rem;
+            font-size: 1rem;
             color: rgba(255, 255, 255, 0.8);
+            margin-top: 0.3rem;
         }
 
         .nav-links {
@@ -150,455 +115,212 @@
             color: var(--secondary);
         }
 
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(0, 87, 183, 0.9), rgba(0, 87, 183, 0.9)), 
-                        url('https://www.rada.gov.ua/images/backgrounds/bg-main.jpg') no-repeat center center;
-            background-size: cover;
-            color: var(--white);
-            padding: 4rem 1rem;
-            text-align: center;
-        }
-
-        .hero-container {
-            max-width: 1200px;
+        .main-content {
+            padding: 2rem;
+            max-width: 1100px;
             margin: 0 auto;
         }
 
-        .hero-title {
-            font-size: 2.5rem;
+        .page-title {
+            font-size: 2rem;
             margin-bottom: 1.5rem;
-            font-weight: 700;
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        .hero-subtitle {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto 2.5rem;
-            color: rgba(255, 255, 255, 0.9);
-            animation: fadeInUp 0.8s ease-out 0.2s forwards;
-            opacity: 0;
-        }
-
-        .hero-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            animation: fadeInUp 0.8s ease-out 0.4s forwards;
-            opacity: 0;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 0.75rem 2rem;
-            border-radius: 4px;
-            text-decoration: none;
+            color: var(--primary-dark);
             font-weight: 500;
-            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .btn-primary {
-            background-color: var(--secondary);
-            color: var(--dark);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--secondary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            border: 2px solid var(--secondary);
-            color: var(--secondary);
-        }
-
-        .btn-outline:hover {
-            background-color: rgba(255, 215, 0, 0.1);
-            transform: translateY(-2px);
-        }
-
-        /* Main Content */
-        .main-content {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1rem;
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-bottom: 2rem;
+            font-weight: 400;
+            border-bottom: 1px solid var(--light-gray);
+            padding-bottom: 1rem;
         }
 
         .section-title {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary-dark);
-            position: relative;
-            padding-bottom: 0.5rem;
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+            color: var(--primary);
+            font-weight: 500;
         }
 
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 60px;
-            height: 3px;
-            background-color: var(--secondary);
+        .section-divider {
+            border: none;
+            height: 1px;
+            background-color: var(--light-gray);
+            margin: 1.5rem 0;
         }
 
         .news-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: 1fr;
             gap: 1.5rem;
-            margin-bottom: 3rem;
         }
 
-        .news-card {
+        .news-item {
+            padding: 1.5rem;
             background-color: var(--white);
-            border-radius: 4px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid var(--secondary);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
             transition: var(--transition);
-            opacity: 0;
-            transform: translateY(20px);
         }
 
-        .news-card:hover {
-            transform: translateY(-5px);
+        .news-item:hover {
+            transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
-        .news-card:nth-child(1) {
-            animation: fadeInUp 0.6s ease-out 0.2s forwards;
-        }
-
-        .news-card:nth-child(2) {
-            animation: fadeInUp 0.6s ease-out 0.4s forwards;
-        }
-
-        .news-card:nth-child(3) {
-            animation: fadeInUp 0.6s ease-out 0.6s forwards;
-        }
-
-        .news-image {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-        }
-
-        .news-content {
-            padding: 1.5rem;
-        }
-
         .news-date {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: var(--gray);
             margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .news-date::before {
+            content: '•';
+            margin-right: 0.5rem;
+            color: var(--secondary);
         }
 
         .news-title {
             font-size: 1.2rem;
             margin-bottom: 0.5rem;
             color: var(--primary-dark);
-        }
-
-        .news-excerpt {
-            color: var(--gray);
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
-        }
-
-        .read-more {
-            color: var(--primary);
-            text-decoration: none;
             font-weight: 500;
-            font-size: 0.9rem;
-            display: inline-flex;
-            align-items: center;
-            transition: var(--transition);
         }
 
-        .read-more:hover {
+        .news-content {
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .highlight-box {
+            background-color: var(--light-gray);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-left: 4px solid var(--primary);
+        }
+
+        .highlight-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
             color: var(--primary-dark);
         }
 
-        .read-more::after {
-            content: '→';
-            margin-left: 5px;
-            transition: var(--transition);
-        }
-
-        .read-more:hover::after {
-            transform: translateX(3px);
-        }
-
-        /* Footer */
         .footer {
             background-color: var(--primary-dark);
             color: var(--white);
-            padding: 3rem 1rem 1.5rem;
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .footer-column h3 {
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            padding-bottom: 0.5rem;
-        }
-
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 2px;
-            background-color: var(--secondary);
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-link {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-link a {
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            transition: var(--transition);
-            font-size: 0.9rem;
-        }
-
-        .footer-link a:hover {
-            color: var(--secondary);
-            padding-left: 5px;
-        }
-
-        .footer-bottom {
-            max-width: 1200px;
-            margin: 2rem auto 0;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem;
             text-align: center;
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.6);
+            margin-top: 3rem;
         }
 
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .footer-text {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
         }
 
-        /* Responsive */
+        .footer-slogan {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--secondary);
+            margin-top: 1rem;
+        }
+
         @media (max-width: 768px) {
-            .header-container {
+            .header-content {
                 flex-direction: column;
-                gap: 1rem;
+                gap: 1.5rem;
+            }
+
+            .logo {
+                flex-direction: column;
+                text-align: center;
             }
 
             .nav-links {
-                gap: 1rem;
                 flex-wrap: wrap;
                 justify-content: center;
             }
 
-            .hero-title {
-                font-size: 2rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .btn {
-                width: 100%;
-                max-width: 300px;
-                text-align: center;
+            .page-title {
+                font-size: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
-    <header class="header">
-        <div class="header-top">
-            <div class="header-top-container">
-                <div class="header-links">
-                    <a href="#" class="header-link">UA</a>
-                    <a href="#" class="header-link">EN</a>
-                    <a href="#" class="header-link">Для громадян</a>
-                    <a href="#" class="header-link">Для ЗМІ</a>
-                </div>
-                <div class="header-links">
-                    <a href="#" class="header-link">Пошук</a>
-                    <a href="#" class="header-link">Карта сайту</a>
-                </div>
-            </div>
-        </div>
-        <div class="header-main">
-            <div class="header-container">
-                <a href="#" class="logo">
-                    <img src="https://www.rada.gov.ua/images/Logo/logo_white.svg" alt="Лого Верховної Ради" class="logo-img">
+    <div class="page-wrapper">
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Emblem_of_Verkhovna_Rada.svg/1200px-Emblem_of_Verkhovna_Rada.svg.png" alt="Лого Верховної Ради" class="logo-img">
                     <div class="logo-text">
-                        <div class="logo-title">Верховна Рада України</div>
+                        <div class="logo-title">ВЕРХОВНА РАДА УКРАЇНИ</div>
                         <div class="logo-subtitle">UKRAINE GTA 04</div>
                     </div>
-                </a>
+                </div>
                 <nav class="nav-links">
                     <a href="#" class="nav-link">Головна</a>
                     <a href="#" class="nav-link">Про Раду</a>
-                    <a href="#" class="nav-link">Депутати</a>
-                    <a href="#" class="nav-link">Законодавство</a>
                     <a href="#" class="nav-link">Новини</a>
+                    <a href="#" class="nav-link">Документи</a>
                     <a href="#" class="nav-link">Контакти</a>
                 </nav>
             </div>
-        </div>
-    </header>
+        </header>
 
-    <section class="hero">
-        <div class="hero-container">
-            <h1 class="hero-title">Верховна Рада України</h1>
-            <p class="hero-subtitle">Єдиний законодавчий орган державної влади в UKRAINE GTA 04. Представництво інтересів громадян та прийняття законів.</p>
-            <div class="hero-buttons">
-                <a href="#" class="btn btn-primary">Останні новини</a>
-                <a href="#" class="btn btn-outline">Документи</a>
-            </div>
-        </div>
-    </section>
+        <main class="main-content">
+            <h1 class="page-title">Верховна Рада України</h1>
+            <p class="page-subtitle">Офіційний вибор для параметру України</p>
 
-    <div class="main-content">
-        <section class="news-section">
-            <h2 class="section-title">Останні новини</h2>
+            <h2 class="section-title">Склад і структура</h2>
+            <p>Законопаркість • Законодавство • Діяльність • Громадськості • Пресмандр</p>
+
+            <hr class="section-divider">
+
             <div class="news-grid">
-                <article class="news-card">
-                    <img src="https://www.rada.gov.ua/uploads/news/2023/10/11/1.jpg" alt="Новина 1" class="news-image">
+                <div class="news-item">
+                    <div class="news-date">19.26. № червня 2025</div>
+                    <h3 class="news-title">Голова Верховної Ради України Русами Стефановує завершена офіційний кінок до Франції</h3>
                     <div class="news-content">
-                        <div class="news-date">11 жовтня 2023</div>
-                        <h3 class="news-title">Засідання Верховної Ради</h3>
-                        <p class="news-excerpt">Розглянуто питання реформи правоохоронної системи в UKRAINE GTA 04.</p>
-                        <a href="#" class="read-more">Детальніше</a>
+                        <p>Офіційний візит до Франції завершився підписанням низки важливих угод.</p>
                     </div>
-                </article>
-                <article class="news-card">
-                    <img src="https://www.rada.gov.ua/uploads/news/2023/10/10/1.jpg" alt="Новина 2" class="news-image">
+                </div>
+
+                <div class="news-item">
+                    <div class="news-date">10.02. № червня 2025</div>
+                    <h3 class="news-title">Франція залишається надійним партнером України у боротьбі з агресією</h3>
                     <div class="news-content">
-                        <div class="news-date">10 жовтня 2023</div>
-                        <h3 class="news-title">Нові законодавчі ініціативи</h3>
-                        <p class="news-excerpt">Депутати внесли низку законопроєктів щодо економічного розвитку.</p>
-                        <a href="#" class="read-more">Детальніше</a>
+                        <p>Спільна декларація про подальше співробітництво у сфері безпеки.</p>
                     </div>
-                </article>
-                <article class="news-card">
-                    <img src="https://www.rada.gov.ua/uploads/news/2023/10/09/1.jpg" alt="Новина 3" class="news-image">
+                </div>
+
+                <div class="news-item">
+                    <div class="news-date">12.04. № червня 2025</div>
+                    <h3 class="news-title">«Державно-правовою партнерістю може стати ключовим інструментом повсякного відновлення України»</h3>
                     <div class="news-content">
-                        <div class="news-date">09 жовтня 2023</div>
-                        <h3 class="news-title">Міжнародне співробітництво</h3>
-                        <p class="news-excerpt">Зустріч з представниками міжнародних організацій щодо підтримки України.</p>
-                        <a href="#" class="read-more">Детальніше</a>
+                        <p>Відсутність Олена Кондратьевна устроїлася в Заступництво Генерального секретаря ОСН!</p>
                     </div>
-                </article>
+                </div>
             </div>
-        </section>
+
+            <div class="highlight-box">
+                <h3 class="highlight-title">Голова Верховної Ради України зустрівся з Головою Собачка Литовської Республіки</h3>
+                <p>Обговорення ключових питань двостороннього співробітництва та підтримки України.</p>
+            </div>
+
+            <p style="text-align: center; margin: 2rem 0; font-style: italic;">Від того наявних</p>
+        </main>
+
+        <footer class="footer">
+            <p class="footer-text">Верховна Рада України | UKRAINE GTA 04</p>
+            <p class="footer-slogan">МИ РАЗОМ - ПРОТИ РОСІЙСЬКОЇ АГРЕСІЇ</p>
+        </footer>
     </div>
-
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-column">
-                <h3>Верховна Рада</h3>
-                <ul class="footer-links">
-                    <li class="footer-link"><a href="#">Про Верховну Раду</a></li>
-                    <li class="footer-link"><a href="#">Структура</a></li>
-                    <li class="footer-link"><a href="#">Депутати</a></li>
-                    <li class="footer-link"><a href="#">Комітети</a></li>
-                    <li class="footer-link"><a href="#">Фракції</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Документи</h3>
-                <ul class="footer-links">
-                    <li class="footer-link"><a href="#">Закони України</a></li>
-                    <li class="footer-link"><a href="#">Постанови</a></li>
-                    <li class="footer-link"><a href="#">Рішення</a></li>
-                    <li class="footer-link"><a href="#">Законопроєкти</a></li>
-                    <li class="footer-link"><a href="#">Регламент</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Ресурси</h3>
-                <ul class="footer-links">
-                    <li class="footer-link"><a href="#">Бібліотека</a></li>
-                    <li class="footer-link"><a href="#">Архів</a></li>
-                    <li class="footer-link"><a href="#">Відеоархів</a></li>
-                    <li class="footer-link"><a href="#">Парламентські видання</a></li>
-                    <li class="footer-link"><a href="#">API для розробників</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Контакти</h3>
-                <ul class="footer-links">
-                    <li class="footer-link"><a href="#">Адреса</a></li>
-                    <li class="footer-link"><a href="#">Телефони</a></li>
-                    <li class="footer-link"><a href="#">Графік роботи</a></li>
-                    <li class="footer-link"><a href="#">Зворотній зв'язок</a></li>
-                    <li class="footer-link"><a href="#">Соціальні мережі</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>© 2023 Верховна Рада України | UKRAINE GTA 04. Усі права захищені.</p>
-        </div>
-    </footer>
-
-    <script>
-        // Анімації при скролі
-        document.addEventListener('DOMContentLoaded', function() {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            document.querySelectorAll('.news-card').forEach(card => {
-                observer.observe(card);
-            });
-
-            // Плавний скрол для навігації
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-        });
-    </script>
 </body>
 </html>
