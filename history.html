@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Історія | Хребет Нації</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0057B7;
+            --secondary: #FFD700;
+            --dark: #1A1A1A;
+            --light: #F8F9FA;
+            --gray: #6C757D;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, #003D82 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 100;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.05)" d="M0,0 L100,0 L100,100 L0,100 Z" /></svg>');
+            background-size: cover;
+            opacity: 0.1;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            line-height: 1;
+        }
+
+        .logo-subtitle {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 0.3rem;
+        }
+
+        /* Навігація */
+        nav {
+            display: flex;
+            gap: 0.5rem;
+            position: relative;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            position: relative;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 1rem;
+            width: calc(100% - 2rem);
+            height: 2px;
+            background-color: var(--secondary);
+            transform: scaleX(0);
+            transition: var(--transition);
+            transform-origin: bottom right;
+        }
+
+        .nav-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        .nav-link:hover {
+            color: var(--secondary);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            min-width: 220px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
+            z-index: 110;
+        }
+
+        .nav-item:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu a {
+            color: var(--dark);
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            display: block;
+            transition: var(--transition);
+            border-left: 3px solid transparent;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: rgba(0, 87, 183, 0.05);
+            color: var(--primary);
+            border-left: 3px solid var(--secondary);
+        }
+
+        .dropdown-arrow {
+            margin-left: 5px;
+            transition: var(--transition);
+            font-size: 0.8em;
+        }
+
+        .nav-item:hover .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 4rem 0;
+            text-align: center;
+            background: url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center;
+            background-size: cover;
+            position: relative;
+            color: white;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 87, 183, 0.8);
+        }
+
+        .hero-content {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        /* History Section */
+        .history-section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+
+        .history-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .history-block {
+            margin-bottom: 3rem;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .history-date {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .history-title {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .history-text {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .founder-info {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .founder-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--secondary);
+        }
+
+        .founder-details {
+            flex: 1;
+        }
+
+        .founder-name {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .founder-position {
+            font-size: 1rem;
+            color: var(--gray);
+            margin-bottom: 1rem;
+        }
+
+        .founder-experience {
+            margin-top: 1.5rem;
+        }
+
+        .experience-item {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .experience-item::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .member-card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid var(--secondary);
+            text-align: center;
+        }
+
+        .member-name {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .member-position {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .join-requirements {
+            margin-top: 2rem;
+        }
+
+        .requirements-list {
+            margin: 1.5rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .requirements-list li {
+            margin-bottom: 0.8rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-link {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-link a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-link a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.3rem;
+            }
+
+            .nav-link {
+                padding: 0.5rem 0.7rem;
+                font-size: 0.9rem;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .founder-info {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .founder-image {
+                margin-bottom: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <div class="logo-text">
+                        <div class="logo-title">ХРЕБЕТ НАЦІЇ</div>
+                        <div class="logo-subtitle">Політична партія</div>
+                    </div>
+                </a>
+                <nav>
+                    <div class="nav-item">
+                        <a href="index.html" class="nav-link">Головна</a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="about.html" class="nav-link">Партія <span class="dropdown-arrow">▼</span></a>
+                        <div class="dropdown-menu">
+                            <a href="about.html">Про партію</a>
+                            <a href="history.html" class="active">Історія</a>
+                            <a href="structure.html">Структура</a>
+                            <a href="documents.html">Документи</a>
+                            <a href="statute.html">Статут</a>
+                        </div>
+                    </div>
+                    <div class="nav-item">
+                        <a href="team.html" class="nav-link">Команда <span class="dropdown-arrow">▼</span></a>
+                        <div class="dropdown-menu">
+                            <a href="team.html">Керівництво</a>
+                            <a href="members.html">Члени партії</a>
+                            <a href="branches.html">Регіональні осередки</a>
+                        </div>
+                    </div>
+                    <div class="nav-item">
+                        <a href="program.html" class="nav-link">Програма <span class="dropdown-arrow">▼</span></a>
+                        <div class="dropdown-menu">
+                            <a href="program.html">Політична програма</a>
+                            <a href="reforms.html">Реформи</a>
+                            <a href="ideology.html">Ідеологія</a>
+                        </div>
+                    </div>
+                    <div class="nav-item">
+                        <a href="news.html" class="nav-link">Новини</a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="contacts.html" class="nav-link">Контакти</a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Історія партії</h1>
+        </div>
+    </section>
+
+    <section class="history-section">
+        <div class="container">
+            <div class="history-content">
+                <div class="history-block">
+                    <div class="history-date">23 червня 2025 року</div>
+                    <h2 class="section-title">Заснування партії</h2>
+                    <p class="history-text">
+                        Політична партія "Хребет Нації" була офіційно заснована 23 червня 2025 року групою патріотично налаштованих громадян на чолі з Кирилом Громовим. Це стало відповіддю на виклики, з якими стикалася Україна у той період - потребу у сильному лідерстві, професійному управлінні та рішучих реформах.
+                    </p>
+                </div>
+
+                <div class="history-block">
+                    <h2 class="section-title">Засновник партії</h2>
+                    <div class="founder-info">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Кирило Громов" class="founder-image">
+                        <div class="founder-details">
+                            <h3 class="founder-name">Кирило Громов</h3>
+                            <p class="founder-position">Засновник та лідер партії "Хребет Нації"</p>
+                            <p>Telegram: @brobrixq | Discord: brobrixq</p>
+                            
+                            <div class="founder-experience">
+                                <h4>Професійний досвід:</h4>
+                                <div class="experience-item">Полковник НПУ (2 рази)</div>
+                                <div class="experience-item">Генерал НПУ</div>
+                                <div class="experience-item">Генерал СБУ</div>
+                                <div class="experience-item">Радник президента</div>
+                                <div class="experience-item">Голова Верховної ради</div>
+                                <div class="experience-item">Голова комітету з питань правоохоронної діяльності</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="history-block">
+                    <h2 class="section-title">Керівництво партії</h2>
+                    <p class="history-text">
+                        Партія об'єднує найкращих фахівців з різних галузей, які мають багаторічний досвід державного управління та громадської діяльності.
+                    </p>
+                    
+                    <div class="members-grid">
+                        <div class="member-card">
+                            <h3 class="member-name">Кирило Громов</h3>
+                            <p class="member-position">Кандидат у Президенти України</p>
+                        </div>
+                        <div class="member-card">
+                            <h3 class="member-name">Бодя Громов</h3>
+                            <p class="member-position">Кандидат у Прем'єр-Міністри</p>
+                            <p class="member-position">Telegram: @fauniy_hlop</p>
+                        </div>
+                        <div class="member-card">
+                            <h3 class="member-name">Саня Житомирський</h3>
+                            <p class="member-position">Куратор партії</p>
+                            <p class="member-position">Telegram: @Sanchas9</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="history-block">
+                    <h2 class="section-title">Члени партії</h2>
+                    <div class="members-grid">
+                        <div class="member-card">
+                            <h3 class="member-name">Сергій Житомирський</h3>
+                        </div>
+                        <div class="member-card">
+                            <h3 class="member-name">Деніс Вовк</h3>
+                        </div>
+                        <div class="member-card">
+                            <h3 class="member-name">Тимофій Прокурорський</h3>
+                        </div>
+                        <div class="member-card">
+                            <h3 class="member-name">Віталій Шевченко</h3>
+                        </div>
+                        <div class="member-card">
+                            <h3 class="member-name">Микита Житомирський</h3>
+                        </div>
+                        <div class="member-card">
+                            <h3 class="member-name">Вячеслав Грозний</h3>
+                        </div>
+                        <div class="member-card">
+                            <h3 class="member-name">Владіслав Грозний</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="history-block">
+                    <h2 class="section-title">Умови вступу в партію</h2>
+                    <div class="join-requirements">
+                        <p>Для того, щоб стати членом партії "Хребет Нації", необхідно:</p>
+                        <ul class="requirements-list">
+                            <li>Проживати у області не менше 7 років</li>
+                            <li>Мати громадянство України</li>
+                            <li>Бути компетентним у своїй галузі</li>
+                            <li>Написати в Telegram на @party_backbone_of_the_nation</li>
+                            <li>Пройти співбесіду з засновником або заступником партії</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Партія</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="about.html">Про нас</a></li>
+                        <li class="footer-link"><a href="history.html">Історія</a></li>
+                        <li class="footer-link"><a href="structure.html">Структура</a></li>
+                        <li class="footer-link"><a href="documents.html">Документи</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Команда</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="team.html">Керівництво</a></li>
+                        <li class="footer-link"><a href="members.html">Члени партії</a></li>
+                        <li class="footer-link"><a href="branches.html">Регіональні осередки</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Приєднатися</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="join.html">Умови вступу</a></li>
+                        <li class="footer-link"><a href="join.html">Подати заявку</a></li>
+                        <li class="footer-link"><a href="volunteer.html">Волонтерство</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Контакти</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="https://t.me/party_backbone_of_the_nation">Telegram</a></li>
+                        <li class="footer-link"><a href="mailto:info@hrebet-natsii.ua">Email</a></li>
+                        <li class="footer-link"><a href="contacts.html">Офіс партії</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Політична партія "Хребет Нації" | UKRAINE GTA 04. Всі права захищені.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Анімації при скролі
+        document.addEventListener('DOMContentLoaded', function() {
+            // Закриття випадаючих меню при кліку поза ними
+            document.addEventListener('click', function(e) {
+                const dropdowns = document.querySelectorAll('.dropdown-menu');
+                dropdowns.forEach(dropdown => {
+                    if (!dropdown.parentElement.contains(e.target)) {
+                        dropdown.style.opacity = '0';
+                        dropdown.style.visibility = 'hidden';
+                        dropdown.style.transform = 'translateY(10px)';
+                    }
+                });
+            });
+
+            // Плавний скрол для навігації
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
