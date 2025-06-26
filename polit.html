@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Політична програма | Хребет Нації</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0057B7;
+            --secondary: #FFD700;
+            --dark: #1A1A1A;
+            --light: #F8F9FA;
+            --gray: #6C757D;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header styles same as other pages */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, #003D82 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Hero section */
+        .hero {
+            padding: 4rem 0;
+            text-align: center;
+            background: url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center;
+            background-size: cover;
+            position: relative;
+            color: white;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 87, 183, 0.8);
+        }
+
+        .hero-content {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Program section */
+        .program-section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+
+        .program-content {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .program-block {
+            margin-bottom: 2.5rem;
+        }
+
+        .program-block-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--secondary);
+        }
+
+        .program-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .program-item-title {
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .program-item-desc {
+            color: var(--gray);
+        }
+
+        .ideology-list {
+            list-style-type: none;
+        }
+
+        .ideology-list li {
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .ideology-list li::before {
+            content: '•';
+            color: var(--secondary);
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: -0.3rem;
+        }
+
+        /* Footer same as other pages */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <!-- Same header as other pages -->
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Політична програма</h1>
+        </div>
+    </section>
+
+    <section class="program-section">
+        <div class="container">
+            <h2 class="section-title">Наші цілі та завдання</h2>
+            
+            <div class="program-content">
+                <div class="program-block">
+                    <h3 class="program-block-title">Основні цілі</h3>
+                    <div class="program-item">
+                        <p class="program-item-desc">Розбудова абсолютно незалежної, могутньої та безпечної Української держави, заснованої на верховенстві права, нульовій толерантності до корупції та непохитній національній ідентичності.</p>
+                    </div>
+                </div>
+
+                <div class="program-block">
+                    <h3 class="program-block-title">Ключові завдання</h3>
+                    <div class="program-item">
+                        <p class="program-item-desc">Тотальне відновлення міцного державного фундаменту України, забезпечення її абсолютної суверенності та національної безпеки, побудова ефективної, вільної від корупції системи управління.</p>
+                    </div>
+                </div>
+
+                <div class="program-block">
+                    <h3 class="program-block-title">Напрями роботи</h3>
+                    <div class="program-item">
+                        <p class="program-item-desc">Розбудова сильної та суверенної держави, забезпечення національної безпеки, рішуча боротьба з корупцією, підвищення професіоналізму управління, формування міцної національної ідентичності.</p>
+                    </div>
+                </div>
+
+                <div class="program-block">
+                    <h3 class="program-block-title">Ідеологія: Український Центризм</h3>
+                    <ul class="ideology-list">
+                        <li>Національна Єдність та Державна Консолідація</li>
+                        <li>Прагматизм та Результативність</li>
+                        <li>Порядок та Стабільність</li>
+                        <li>Баланс Інтересів</li>
+                        <li>Національні Інтереси Понад Усе</li>
+                        <li>Ефективне Державне Управління</li>
+                    </ul>
+                </div>
+
+                <div class="program-block">
+                    <h3 class="program-block-title">Наші реформи</h3>
+                    
+                    <div class="program-item">
+                        <h4 class="program-item-title">1. Реформа МВС/НПУ: "Патруль Довіри"</h4>
+                        <p class="program-item-desc">Запровадження інноваційних форм взаємодії поліції та населення, регулярні публічні заходи, зустрічі правоохоронців з громадянами для розбудови довіри.</p>
+                    </div>
+                    
+                    <div class="program-item">
+                        <h4 class="program-item-title">2. Реформа МО/ЗСУ: "Бойова Злагодженість"</h4>
+                        <p class="program-item-desc">Регулярне проведення масштабних військових навчань з залученням всіх силових структур для відпрацювання взаємодії.</p>
+                    </div>
+                    
+                    <div class="program-item">
+                        <h4 class="program-item-title">3. Реформа МНС/ДСНС: "Громадянська Оборона"</h4>
+                        <p class="program-item-desc">Організація регулярних навчальних програм для населення з основ цивільної оборони та особистої безпеки.</p>
+                    </div>
+                    
+                    <div class="program-item">
+                        <h4 class="program-item-title">4. Реформа МОЗ: "Медична Етика та Якість"</h4>
+                        <p class="program-item-desc">Впровадження жорстких стандартів якості медичного обслуговування та системи аудиту медичних закладів.</p>
+                    </div>
+                    
+                    <div class="program-item">
+                        <h4 class="program-item-title">5. Реформа ЗМІ: "Голос Нації"</h4>
+                        <p class="program-item-desc">Створення єдиної державної медіа-платформи для об'єктивного інформування громадян.</p>
+                    </div>
+                    
+                    <div class="program-item">
+                        <h4 class="program-item-title">6. Реформа Укрзалізниці: "Точність та Інформація"</h4>
+                        <p class="program-item-desc">Запровадження суворих стандартів пунктуальності та оперативного інформування пасажирів.</p>
+                    </div>
+                </div>
+
+                <div class="program-block">
+                    <h3 class="program-block-title">Інші ініціативи</h3>
+                    
+                    <div class="program-item">
+                        <h4 class="program-item-title">Редакція Законодавства</h4>
+                        <p class="program-item-desc">Створення сучасної законодавчої бази та актуалізація застарілих нормативно-правових актів.</p>
+                    </div>
+                    
+                    <div class="program-item">
+                        <h4 class="program-item-title">Щотижневі Збори Міністерств</h4>
+                        <p class="program-item-desc">Регулярні зустрічі з керівниками державних органів для обговорення проблем та планів.</p>
+                    </div>
+                    
+                    <div class="program-item">
+                        <h4 class="program-item-title">Реформа Системи Розслідувань</h4>
+                        <p class="program-item-desc">Нова модель розслідування злочинів з чіткою координацією між НПУ та СБУ.</p>
+                    </div>
+                    
+                    <div class="program-item">
+                        <h4 class="program-item-title">Нагороди від Президента</h4>
+                        <p class="program-item-desc">Система державних відзнак за внесок у розвиток держави.</p>
+                    </div>
+                    
+                    <div class="program-item">
+                        <h4 class="program-item-title">Публічні Засідання</h4>
+                        <p class="program-item-desc">Регулярні слухання з керівництвом силових структур для підвищення прозорості.</p>
+                    </div>
+                    
+                    <div class="program-item">
+                        <h4 class="program-item-title">Трибуни з Громадянами</h4>
+                        <p class="program-item-desc">Щотижневі відкриті зустрічі для висловлення думок та пропозицій громадян.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <!-- Same footer as other pages -->
+        </div>
+    </footer>
+</body>
+</html>
