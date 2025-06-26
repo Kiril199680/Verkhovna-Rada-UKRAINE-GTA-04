@@ -26,6 +26,7 @@
             background-color: var(--light);
             color: var(--dark);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         .container {
@@ -34,12 +35,162 @@
             padding: 0 20px;
         }
 
-        /* Header styles same as other pages */
+        /* Header */
         header {
             background: linear-gradient(135deg, var(--primary) 0%, #003D82 100%);
             color: white;
             padding: 1rem 0;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 100;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.05)" d="M0,0 L100,0 L100,100 L0,100 Z" /></svg>');
+            background-size: cover;
+            opacity: 0.1;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            line-height: 1;
+        }
+
+        .logo-subtitle {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 0.3rem;
+        }
+
+        /* Навігація */
+        nav {
+            display: flex;
+            gap: 0.5rem;
+            position: relative;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            position: relative;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 1rem;
+            width: calc(100% - 2rem);
+            height: 2px;
+            background-color: var(--secondary);
+            transform: scaleX(0);
+            transition: var(--transition);
+            transform-origin: bottom right;
+        }
+
+        .nav-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        .nav-link:hover {
+            color: var(--secondary);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            min-width: 220px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
+            z-index: 110;
+        }
+
+        .nav-item:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu a {
+            color: var(--dark);
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            display: block;
+            transition: var(--transition);
+            border-left: 3px solid transparent;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: rgba(0, 87, 183, 0.05);
+            color: var(--primary);
+            border-left: 3px solid var(--secondary);
+        }
+
+        .dropdown-arrow {
+            margin-left: 5px;
+            transition: var(--transition);
+            font-size: 0.8em;
+        }
+
+        .nav-item:hover .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.3rem;
+            }
+            .nav-link {
+                padding: 0.5rem 0.7rem;
+                font-size: 0.9rem;
+            }
         }
 
         /* Hero section */
@@ -50,6 +201,7 @@
             background-size: cover;
             position: relative;
             color: white;
+            margin-top: 0;
         }
 
         .hero::before {
@@ -146,11 +298,62 @@
             font-size: 0.9rem;
         }
 
-        /* Footer same as other pages */
+        /* Footer */
         footer {
             background-color: var(--dark);
             color: white;
             padding: 3rem 0 1.5rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-link {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-link a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-link a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
         }
 
         @media (max-width: 768px) {
@@ -162,11 +365,51 @@
             }
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header>
         <div class="container">
-            <!-- Same header as other pages -->
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <div class="logo-text">
+                        <div class="logo-title">ХРЕБЕТ НАЦІЇ</div>
+                        <div class="logo-subtitle">Політична партія</div>
+                    </div>
+                </a>
+                <nav>
+                    <div class="nav-item">
+                        <a href="index.html" class="nav-link">Головна</a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="#" class="nav-link">Партія <span class="dropdown-arrow">▼</span></a>
+                        <div class="dropdown-menu">
+                            <a href="about.html">Про партію</a>
+                            <a href="history.html">Історія</a>
+                            <a href="structure.html">Структура</a>
+                            <a href="statute.html">Статут</a>
+                        </div>
+                    </div>
+                    <div class="nav-item">
+                        <a href="#" class="nav-link active">Команда <span class="dropdown-arrow">▼</span></a>
+                        <div class="dropdown-menu">
+                            <a href="team.html">Керівництво</a>
+                        </div>
+                    </div>
+                    <div class="nav-item">
+                        <a href="#" class="nav-link">Програма <span class="dropdown-arrow">▼</span></a>
+                        <div class="dropdown-menu">
+                            <a href="program.html">Політична програма</a>
+                        </div>
+                    </div>
+                    <div class="nav-item">
+                        <a href="news.html" class="nav-link">Для ЗМІ</a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="contacts.html" class="nav-link">Контакти</a>
+                    </div>
+                </nav>
+            </div>
         </div>
     </header>
 
@@ -182,6 +425,7 @@
             
             <div class="leaders-grid">
                 <div class="leader-card">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Кирило Громов" class="leader-photo">
                     <div class="leader-info">
                         <h3 class="leader-name">Кирило Громов</h3>
                         <p class="leader-position">Голова партії</p>
@@ -194,6 +438,7 @@
                 </div>
                 
                 <div class="leader-card">
+                    <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Бодя Громов" class="leader-photo">
                     <div class="leader-info">
                         <h3 class="leader-name">Бодя Громов</h3>
                         <p class="leader-position">Перший заступник</p>
@@ -205,6 +450,7 @@
                 </div>
                 
                 <div class="leader-card">
+                    <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Саня Житомирський" class="leader-photo">
                     <div class="leader-info">
                         <h3 class="leader-name">Саня Житомирський</h3>
                         <p class="leader-position">Куратор партії</p>
@@ -220,8 +466,70 @@
 
     <footer>
         <div class="container">
-            <!-- Same footer as other pages -->
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Партія</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="about.html">Про нас</a></li>
+                        <li class="footer-link"><a href="program.html">Програма</a></li>
+                        <li class="footer-link"><a href="structure.html">Структура</a></li>
+                        <li class="footer-link"><a href="statute.html">Документи</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Команда</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="team.html">Керівництво</a></li>
+                        <li class="footer-link"><a href="#">Члени партії</a></li>
+                        <li class="footer-link"><a href="#">Регіональні осередки</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Приєднатися</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#">Умови вступу</a></li>
+                        <li class="footer-link"><a href="#">Подати заявку</a></li>
+                        <li class="footer-link"><a href="#">Волонтерство</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Контакти</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="https://t.me/party_backbone_of_the_nation">Telegram</a></li>
+                        <li class="footer-link"><a href="contacts.html">Email</a></li>
+                        <li class="footer-link"><a href="contacts.html">Офіс партії</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Політична партія "Хребет Нації". Всі права захищені.</p>
+            </div>
         </div>
     </footer>
+
+    <script>
+        // Mobile menu functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', function(e) {
+                const dropdowns = document.querySelectorAll('.dropdown-menu');
+                dropdowns.forEach(dropdown => {
+                    if (!dropdown.parentElement.contains(e.target)) {
+                        dropdown.style.opacity = '0';
+                        dropdown.style.visibility = 'hidden';
+                        dropdown.style.transform = 'translateY(10px)';
+                    }
+                });
+            });
+
+            // Highlight current page in navigation
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            document.querySelectorAll('.nav-link').forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
