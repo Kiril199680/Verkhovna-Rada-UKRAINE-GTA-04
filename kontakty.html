@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакти | Хребет Нації</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0057B7;
+            --secondary: #FFD700;
+            --dark: #1A1A1A;
+            --light: #F8F9FA;
+            --gray: #6C757D;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, #003D82 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 100;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.05)" d="M0,0 L100,0 L100,100 L0,100 Z" /></svg>');
+            background-size: cover;
+            opacity: 0.1;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            line-height: 1;
+        }
+
+        .logo-subtitle {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 0.3rem;
+        }
+
+        /* Оновлена навігація */
+        nav {
+            display: flex;
+            gap: 0.5rem;
+            position: relative;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            position: relative;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 1rem;
+            width: calc(100% - 2rem);
+            height: 2px;
+            background-color: var(--secondary);
+            transform: scaleX(0);
+            transition: var(--transition);
+            transform-origin: bottom right;
+        }
+
+        .nav-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        .nav-link:hover {
+            color: var(--secondary);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            min-width: 220px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
+            z-index: 110;
+        }
+
+        .nav-item:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu a {
+            color: var(--dark);
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            display: block;
+            transition: var(--transition);
+            border-left: 3px solid transparent;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: rgba(0, 87, 183, 0.05);
+            color: var(--primary);
+            border-left: 3px solid var(--secondary);
+        }
+
+        .dropdown-arrow {
+            margin-left: 5px;
+            transition: var(--transition);
+            font-size: 0.8em;
+        }
+
+        .nav-item:hover .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.3rem;
+            }
+            .nav-link {
+                padding: 0.5rem 0.7rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Hero section */
+        .hero {
+            padding: 4rem 0;
+            text-align: center;
+            background: url('https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center;
+            background-size: cover;
+            position: relative;
+            color: white;
+            margin-top: 0;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 87, 183, 0.8);
+        }
+
+        .hero-content {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Contacts section */
+        .contacts-section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+
+        .contacts-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-card {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .contact-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .telegram-link {
+            display: inline-block;
+            background-color: #0088cc;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .telegram-link:hover {
+            background-color: var(--secondary);
+            color: var(--dark);
+        }
+
+        .party-telegram {
+            background-color: var(--primary);
+            margin-top: 3rem;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .party-telegram-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-link {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-link a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-link a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <div class="logo-text">
+                        <div class="logo-title">ХРЕБЕТ НАЦІЇ</div>
+                        <div class="logo-subtitle">Політична партія</div>
+                    </div>
+                </a>
+                <nav>
+                    <div class="nav-item">
+                        <a href="index.html" class="nav-link">Головна</a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="#" class="nav-link">Партія <span class="dropdown-arrow">▼</span></a>
+                        <div class="dropdown-menu">
+                            <a href="pronas.html">Про партію</a>
+                            <a href="history.html">Історія</a>
+                            <a href="struktura.html">Структура</a>
+                            <a href="https://docs.google.com/document/d/1Z_ZQX6RcUzW5KoTGOgIgWIPpgB_pOoigJr-PRd0FoS0/edit?tab=t.0">Статут</a>
+                        </div>
+                    </div>
+                    <div class="nav-item">
+                        <a href="#" class="nav-link">Команда <span class="dropdown-arrow">▼</span></a>
+                        <div class="dropdown-menu">
+                            <a href="team.html">Керівництво</a>
+                        </div>
+                    </div>
+                    <div class="nav-item">
+                        <a href="#" class="nav-link">Програма <span class="dropdown-arrow">▼</span></a>
+                        <div class="dropdown-menu">
+                            <a href="polit.html">Політична програма</a>
+                        </div>
+                    </div>
+                    <div class="nav-item">
+                        <a href="news.html" class="nav-link">Для ЗМІ</a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="contacts.html" class="nav-link active">Контакти</a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Наші контакти</h1>
+            <p>Зв'яжіться з нами для співпраці або отримання додаткової інформації</p>
+        </div>
+    </section>
+
+    <section class="contacts-section">
+        <div class="container">
+            <h2 class="section-title">Керівництво партії</h2>
+            
+            <div class="contacts-container">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3 class="contact-title">Засновник партії</h3>
+                    <p class="contact-info">Кирило Громов</p>
+                    <a href="https://t.me/brobrixq" class="telegram-link">
+                        <i class="fab fa-telegram"></i> @brobrixq
+                    </a>
+                    <p class="contact-info" style="margin-top: 1rem;">Discord: brobrixq</p>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3 class="contact-title">Заступник засновника</h3>
+                    <p class="contact-info">Бодя Громов</p>
+                    <a href="https://t.me/fauniy_hlop" class="telegram-link">
+                        <i class="fab fa-telegram"></i> @fauniy_hlop
+                    </a>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="contact-title">Куратор партії</h3>
+                    <p class="contact-info">Саня Житомирський</p>
+                    <a href="https://t.me/Sanchas9" class="telegram-link">
+                        <i class="fab fa-telegram"></i> @Sanchas9
+                    </a>
+                </div>
+            </div>
+            
+            <div class="party-telegram">
+                <h3 class="party-telegram-title">Офіційний Telegram-канал партії</h3>
+                <a href="https://t.me/party_backbone_of_the_nation" class="telegram-link" style="font-size: 1.2rem;">
+                    <i class="fab fa-telegram"></i> @party_backbone_of_the_nation
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Партія</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="pronas.html">Про нас</a></li>
+                        <li class="footer-link"><a href="polit.html">Програма</a></li>
+                        <li class="footer-link"><a href="struktura.html">Структура</a></li>
+                        <li class="footer-link"><a href="https://docs.google.com/document/d/1Z_ZQX6RcUzW5KoTGOgIgWIPpgB_pOoigJr-PRd0FoS0/edit?tab=t.0">Документи</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Команда</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="team.html">Керівництво</a></li>
+                        <li class="footer-link"><a href="#">Члени партії</a></li>
+                        <li class="footer-link"><a href="#">Регіональні осередки</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Приєднатися</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#">Умови вступу</a></li>
+                        <li class="footer-link"><a href="#">Подати заявку</a></li>
+                        <li class="footer-link"><a href="#">Волонтерство</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Контакти</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="https://t.me/party_backbone_of_the_nation">Telegram</a></li>
+                        <li class="footer-link"><a href="contacts.html">Email</a></li>
+                        <li class="footer-link"><a href="contacts.html">Офіс партії</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Політична партія "Хребет Нації". Всі права захищені.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', function(e) {
+                const dropdowns = document.querySelectorAll('.dropdown-menu');
+                dropdowns.forEach(dropdown => {
+                    if (!dropdown.parentElement.contains(e.target)) {
+                        dropdown.style.opacity = '0';
+                        dropdown.style.visibility = 'hidden';
+                        dropdown.style.transform = 'translateY(10px)';
+                    }
+                });
+            });
+
+            // Highlight current page in navigation
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            document.querySelectorAll('.nav-link').forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
