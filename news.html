@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Новини | Хребет Нації</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0057B7;
+            --secondary: #FFD700;
+            --dark: #1A1A1A;
+            --light: #F8F9FA;
+            --gray: #6C757D;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header styles same as other pages */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, #003D82 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Hero section */
+        .hero {
+            padding: 4rem 0;
+            text-align: center;
+            background: url('https://images.unsplash.com/photo-1586339949916-3e9457bef6d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center;
+            background-size: cover;
+            position: relative;
+            color: white;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 87, 183, 0.8);
+        }
+
+        .hero-content {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* News section */
+        .news-section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .news-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        .news-image-container {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .news-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .news-card:hover .news-image {
+            transform: scale(1.05);
+        }
+
+        .news-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .news-date {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .news-title {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: 600;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .news-excerpt {
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .read-more {
+            display: inline-block;
+            color: white;
+            background-color: var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            align-self: flex-start;
+        }
+
+        .read-more:hover {
+            background-color: var(--secondary);
+            color: var(--dark);
+        }
+
+        /* Footer same as other pages */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <!-- Same header as other pages -->
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Останні новини</h1>
+            <p>Актуальні події та заяви партії "Хребет Нації"</p>
+        </div>
+    </section>
+
+    <section class="news-section">
+        <div class="container">
+            <h2 class="section-title">Новини та події</h2>
+            
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="news-image-container">
+                        <img src="https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Зустріч з виборцями" class="news-image">
+                    </div>
+                    <div class="news-content">
+                        <p class="news-date">15 червня 2024</p>
+                        <h3 class="news-title">Зустріч з виборцями у Києві</h3>
+                        <p class="news-excerpt">Кирило Громов провів масштабну зустріч з виборцями, де представив основні положення політичної програми партії "Хребет Нації".</p>
+                        <a href="#" class="read-more">Детальніше</a>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="news-image-container">
+                        <img src="https://images.unsplash.com/photo-1575320181282-9afab399332c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Нові реформи" class="news-image">
+                    </div>
+                    <div class="news-content">
+                        <p class="news-date">10 червня 2024</p>
+                        <h3 class="news-title">Антикорупційні реформи</h3>
+                        <p class="news-excerpt">Партія "Хребет Нації" анонсувала серію радикальних заходів щодо боротьби з корупцією в усіх галузях державного управління.</p>
+                        <a href="#" class="read-more">Детальніше</a>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="news-image-container">
+                        <img src="https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Форум" class="news-image">
+                    </div>
+                    <div class="news-content">
+                        <p class="news-date">5 червня 2024</p>
+                        <h3 class="news-title">Форум "Нова Україна"</h3>
+                        <p class="news-excerpt">Представники партії взяли активну участь у міжнародному форумі, де обговорювалися ключові напрями розвитку держави.</p>
+                        <a href="#" class="read-more">Детальніше</a>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="news-image-container">
+                        <img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Регіональні осередки" class="news-image">
+                    </div>
+                    <div class="news-content">
+                        <p class="news-date">1 червня 2024</p>
+                        <h3 class="news-title">Нові регіональні осередки</h3>
+                        <p class="news-excerpt">Партія продовжує розширювати свою присутність, відкривши осередки у 10 ключових регіонах України.</p>
+                        <a href="#" class="read-more">Детальніше</a>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="news-image-container">
+                        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Соціальні ініціативи" class="news-image">
+                    </div>
+                    <div class="news-content">
+                        <p class="news-date">25 травня 2024</p>
+                        <h3 class="news-title">Програма "Захистимо ветеранів"</h3>
+                        <p class="news-excerpt">"Хребет Нації" запускає комплексну програму підтримки ветеранів та їхніх родин по всій Україні.</p>
+                        <a href="#" class="read-more">Детальніше</a>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="news-image-container">
+                        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Молодіжна політика" class="news-image">
+                    </div>
+                    <div class="news-content">
+                        <p class="news-date">20 травня 2024</p>
+                        <h3 class="news-title">Набір у молодіжне крило</h3>
+                        <p class="news-excerpt">Молоді активісти запрошуються до роботи над молодіжними ініціативами та проектами партії.</p>
+                        <a href="#" class="read-more">Детальніше</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <!-- Same footer as other pages -->
+        </div>
+    </footer>
+</body>
+</html>
