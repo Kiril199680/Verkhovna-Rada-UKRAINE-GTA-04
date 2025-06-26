@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <!-- Та сама шапка як у інших сторінок -->
+    <title>Члени партії | Хребет Нації</title>
+    <style>
+        /* Ті самі стилі як у інших сторінок */
+        
+        .members-section {
+            padding: 4rem 0;
+        }
+        
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .member-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            border-top: 3px solid var(--secondary);
+        }
+        
+        .member-name {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.3rem;
+        }
+        
+        .member-position {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Та сама шапка сайту -->
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Члени нашої партії</h1>
+        </div>
+    </section>
+
+    <section class="members-section">
+        <div class="container">
+            <h2 class="section-title">Наші члени</h2>
+            <p style="text-align: center; margin-bottom: 2rem;">Партія об'єднує активних громадян, які прагнуть змін до кращого</p>
+            
+            <div class="members-grid">
+                <div class="member-card">
+                    <h3 class="member-name">Сергій Житомирський</h3>
+                    <p class="member-position">Керівник оргвідділу</p>
+                </div>
+                
+                <div class="member-card">
+                    <h3 class="member-name">Деніс Вовк</h3>
+                    <p class="member-position">Голова аналітичного центру</p>
+                </div>
+                
+                <div class="member-card">
+                    <h3 class="member-name">Тимофій Прокурорський</h3>
+                    <p class="member-position">PR-менеджер</p>
+                </div>
+                
+                <div class="member-card">
+                    <h3 class="member-name">Віталій Шевченко</h3>
+                    <p class="member-position">Міжнародний відділ</p>
+                </div>
+                
+                <div class="member-card">
+                    <h3 class="member-name">Микита Житомирський</h3>
+                    <p class="member-position">Регіональний координатор</p>
+                </div>
+                
+                <div class="member-card">
+                    <h3 class="member-name">Вячеслав Грозний</h3>
+                    <p class="member-position">Юридичний відділ</p>
+                </div>
+                
+                <div class="member-card">
+                    <h3 class="member-name">Владіслав Грозний</h3>
+                    <p class="member-position">Фінансовий відділ</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Такий самий підвал як у інших сторінок -->
+</body>
+</html>
